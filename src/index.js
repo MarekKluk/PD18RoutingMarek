@@ -1,17 +1,34 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {
+  BrowserRouter as Router, Route, Routes,
+} from 'react-router-dom';
+import root from 'react-dom';
+import { TicTacToeGame } from './views/TicTacToe';
+import { CommentsDashboard } from './views/PostsAndUsers/CommentsDashboard';
+import { Layout } from './Layout';
+import { postsAndUsersPath, ticTacToePath, toDoListPath } from './Layout/Navigation/LinksPaths';
+import { ToDoListApp } from './views/ToDoList/App';
+import { Home } from './Layout/Home';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+export function FirstRouterApp() {
+  return (
+    <Router> {/* eslint-disable-line */}
+      <div>
+        <Layout>
+          <Routes>
+            <Route path='/' element={<Home />} > </Route> {/* eslint-disable-line */}
+            <Route path={ticTacToePath} element={<TicTacToeGame />} layout={Layout}> </Route>
+            <Route
+              path={postsAndUsersPath}
+              element={<CommentsDashboard />}
+              layout={Layout}
+            />
+            <Route path={toDoListPath} element={<ToDoListApp />} layout={Layout}> </Route>
+          </Routes>
+        </Layout>
+      </div>
+    </Router>
+  );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(<FirstRouterApp />, document.getElementById('root'));
