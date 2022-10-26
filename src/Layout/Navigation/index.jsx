@@ -1,34 +1,29 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
-import styles from '../../styles.module.css';
+import { useNavigate } from 'react-router-dom';
 import { postsAndUsersPath, ticTacToePath, toDoListPath } from './LinksPaths';
+import styles from '../../styles.module.css';
 
 export function NavigationBar() {
+  const navigate = useNavigate();
   return (
     <div>
       <nav className={styles.navigationBar}>
         <ul>
           <li>
-            <Link to={ticTacToePath}>
-              <Button variant="text">
-                <p>Tic Tac Toe</p>
-              </Button>
-            </Link>
+            <Button variant="text" onClick={() => navigate(ticTacToePath)}>
+              <p>Tic Tac Toe</p>
+            </Button>
           </li>
           <li>
-            <Link to={postsAndUsersPath}>
-              <Button variant="text">
-                <p>Posts And Users</p>
-              </Button>
-            </Link>
+            <Button variant="text" onClick={() => navigate(postsAndUsersPath)}>
+              <p>Posts And Users</p>
+            </Button>
           </li>
           <li>
-            <Link to={toDoListPath}>
-              <Button variant="text">
-                <p>To Do List</p>
-              </Button>
-            </Link>
+            <Button variant="text" onClick={() => navigate(toDoListPath)}>
+              <p>To Do List</p>
+            </Button>
           </li>
         </ul>
       </nav>

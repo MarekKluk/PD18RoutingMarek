@@ -17,7 +17,7 @@ export function FirstRouterApp() {
         <Layout>
           <Routes>
             <Route path='/' element={<Home />} > </Route> {/* eslint-disable-line */}
-            <Route path={ticTacToePath} element={<TicTacToeGame />} layout={Layout}> </Route>
+            <Route path={ticTacToePath} element={<TicTacToeGame />}> </Route>
             <Route
               path={postsAndUsersPath}
               element={<CommentsDashboard />}
