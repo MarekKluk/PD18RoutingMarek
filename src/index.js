@@ -13,20 +13,18 @@ import { Home } from './Layout/Home';
 export function FirstRouterApp() {
   return (
     <Router> {/* eslint-disable-line */}
-      <div>
-        <Layout>
-          <Routes>
-            <Route path='/' element={<Home />} > </Route> {/* eslint-disable-line */}
-            <Route path={ticTacToePath} element={<TicTacToeGame />} layout={Layout}> </Route>
-            <Route
-              path={postsAndUsersPath}
-              element={<CommentsDashboard />}
-              layout={Layout}
-            />
-            <Route path={toDoListPath} element={<ToDoListApp />} layout={Layout}> </Route>
-          </Routes>
-        </Layout>
-      </div>
+      <Layout>
+        <Routes>
+          <Route path='/' element={<Home />} > </Route> {/* eslint-disable-line */}
+          <Route path={ticTacToePath} element={<TicTacToeGame />} layout={Layout}> </Route>
+          <Route
+            path={postsAndUsersPath}
+            element={<CommentsDashboard />}
+            layout={Layout}
+          />
+          <Route path={toDoListPath} element={<ToDoListApp />} layout={Layout}> </Route>
+        </Routes>
+      </Layout>
     </Router>
   );
 }

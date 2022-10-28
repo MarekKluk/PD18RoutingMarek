@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { UserButton } from './UserButton';
 import { PostList } from './PostList';
 import { PhotosList } from './PhotosList';
+import './App.css';
 
 const baseUrl = 'https://jsonplaceholder.typicode.com';
 const usersUrl = `${baseUrl}/users`;
@@ -16,6 +17,8 @@ export function CommentsDashboard() {
   const [users, setUsers] = useState(null);
   const [selectedUserId, setSelectedUserId] = useState();
   const [displayPostsOrPhotos, setDisplayPostsOrPhotos] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(usersUrl)
@@ -25,10 +28,25 @@ export function CommentsDashboard() {
 
   const onUserClick = (userId) => setSelectedUserId(userId);
 
+  useEffect(() => {
+    const params = searchParams.get('q');
+    setDisplayPostsOrPhotos(params === 'true');
+  }, []);
+
+  const handleDisplayPostsButton = () => {
+    setDisplayPostsOrPhotos(true);
+    navigate('/posts-and-users?q=' + true);
+  };
+
+  const handleDisplayPhotosButton = () => {
+    setDisplayPostsOrPhotos(false);
+    navigate('/posts-and-users?q=' + false);
+  };
+
   return (
     <main>
-      <Button variant="contained" onClick={() => setDisplayPostsOrPhotos(true)}>Display Posts</Button>
-      <Button variant="contained" onClick={() => setDisplayPostsOrPhotos(false)}>Display Photos</Button>
+      <Button variant="contained" onClick={handleDisplayPostsButton}>Display Posts</Button>
+      <Button variant="contained" onClick={handleDisplayPhotosButton}>Display Photos</Button>
       <div>
         {users
           ? users.map((user) => (

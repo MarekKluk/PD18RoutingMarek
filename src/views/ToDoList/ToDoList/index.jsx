@@ -113,7 +113,6 @@ export function ToDoList() {
       const splittedLists = splitListByStatusAndFindBiggestId(todoListArray);
       setToDoList(splittedLists.todo);
       setFinishedList(splittedLists.finished);
-      console.log(splittedLists.todo);
     }
     fetchToDos();
   }, []);

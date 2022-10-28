@@ -21,5 +21,6 @@ module.exports = {
     'react/no-set-state': 'off',
     'max-lines-per-function': [1, 40],
     'import/prefer-default-export': 'off',
+    'no-plusplus': 'off',
   },
 };

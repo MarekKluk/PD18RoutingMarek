@@ -14,9 +14,11 @@ function checkForWinner(squaresArray) {
     [0, 4, 8],
     [2, 4, 6],
   ];
-  for (let i = 0; i < winningMatrix.length; i++) {
+  for (let i = 0; i < winningMatrix.length; i++) { // eslint-disable-line
     const [a, b, c] = winningMatrix[i];
-    if (flattedSquaresArray[a] && flattedSquaresArray[a] === flattedSquaresArray[b] && flattedSquaresArray[a] === flattedSquaresArray[c]) {
+    if (flattedSquaresArray[a]
+      && flattedSquaresArray[a] === flattedSquaresArray[b]
+      && flattedSquaresArray[a] === flattedSquaresArray[c]) {
       return flattedSquaresArray[a];
     }
   }
@@ -47,7 +49,7 @@ export function TicTacToeGame() {
     <div>
       <Board tiles={tiles} onBoardTileClick={addNewSignToTheBoardTile} />
       <div className={styles.displayPlayer}>{status}</div>
-      <button onClick={startNewGame}>New Game</button>
+      <button onClick={startNewGame}>New Game</button> {/* eslint-disable-line */}
     </div>
   );
 }
